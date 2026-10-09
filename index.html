@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pressure Point // The Reality of Student Life</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="glow-orb orb-1" id="orb1"></div>
+  <div class="glow-orb orb-2" id="orb2"></div>
+  <canvas id="ambientCanvas"></canvas>
+
+  <nav class="top-nav">
+    <div class="nav-left">
+      <div class="beacon">
+        <span class="beacon-ring"></span>
+        <span class="beacon-core"></span>
+      </div>
+      <div>
+        <div class="nav-title font-mono">SYS_DIAGNOSTICS // V2.4</div>
+        <div class="nav-sub">PRESSURE POINT</div>
+      </div>
+    </div>
+
+    <div class="nav-center font-mono">
+      <span class="status-pill text-rose" id="navStatus">STATUS: ANALYZING</span>
+      <span class="hud-slash">/</span>
+      <span>ACTIVE STRESSORS: <b id="selectedCount" class="text-white">0</b></span>
+    </div>
+
+    <div class="nav-right">
+      <button id="panicBtn" class="panic-trigger-btn">
+        <i data-lucide="shield-alert"></i>
+        <span>PANIC OVERRIDE</span>
+      </button>
+
+      <button id="audioBtn" class="audio-btn" title="Brown Noise Generator">
+        <i data-lucide="volume-x" id="audioIcon"></i>
+        <span id="audioText" class="font-mono">MUTE</span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="panic-screen" id="panicScreen">
+    <div class="panic-card">
+      <div class="panic-icon">
+        <i data-lucide="shield-check"></i>
+      </div>
+      <h2>GROUNDING OVERRIDE INITIATED</h2>
+      <p>This exam, interview, or back-log does not define your life. Stop the spiral for 30 seconds.</p>
+
+      <div class="grounding-disc" id="groundingDisc">
+        <span id="groundingAction" class="font-mono">INHALE</span>
+      </div>
+
+      <button id="exitPanic" class="exit-panic-btn">
+        <i data-lucide="arrow-left"></i> RETURN TO COCKPIT
+      </button>
+    </div>
+  </div>
+
+  <main class="page-container">
+
+    <header class="hero-block">
+      <div class="hero-badge font-mono">
+        <span class="dot-red"></span> STUDENT LIFE STRUGGLE // THE UNFILTERED TRUTH
+      </div>
+
+      <div class="shatter-artwork-container" id="artworkContainer">
+        <div class="artwork-backdrop-glow"></div>
+        <canvas id="disintegrationCanvas"></canvas>
+        <div class="artwork-meta font-mono">
+          <span class="status-tag"><i data-lucide="activity"></i> COGNITIVE DISPERSION</span>
+          <span class="interaction-hint">[MOVE CURSOR TO SCATTER CUBES]</span>
+        </div>
+      </div>
+
+      <h1 class="hero-heading">
+        The Hidden Reality Of <br>
+        <span class="text-gradient">Student Struggles</span>
+      </h1>
+
+      <p class="hero-subtext">
+        College isn't just fests and degrees. It is the slow, silent disintegration of a person under the weight of backlogs, recruiter silence, and the constant fear of being inadequate.
+      </p>
+
+      <div class="hero-stats-band font-mono">
+        <div class="band-item">
+          <span class="band-k">AVG_STUDENT_DEBT_ANXIETY</span>
+          <span class="band-v text-rose">HIGH</span>
+        </div>
+        <div class="band-div"></div>
+        <div class="band-item">
+          <span class="band-k">COLD_EMAIL_NO_RESPONSE</span>
+          <span class="band-v text-amber">94.2%</span>
+        </div>
+        <div class="band-div"></div>
+        <div class="band-item">
+          <span class="band-k">IMPOSTER_SYNDROME</span>
+          <span class="band-v text-rose">UNIVERSAL</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="matrix-section" id="diagnostics">
+      <div class="section-title">
+        <span class="sec-label font-mono">01 // INTERACTIVE DIAGNOSTIC ENGINE</span>
+        <h2>Select What You're Facing Right Now</h2>
+        <p>No arbitrary sliders. Click the real-world situations you are dealing with today to calculate your real PSI burden.</p>
+      </div>
+
+      <div class="diagnostic-layout">
+
+        <div class="scenarios-container">
+          
+          <div class="category-block">
+            <div class="cat-header font-mono">
+              <i data-lucide="book-open" class="text-cyan"></i>
+              <span>ACADEMICS & COLLEGE DEADLINES</span>
+            </div>
+            <div class="chips-grid">
+              <button class="stress-chip" data-impact="18" data-title="75% Attendance Crisis">
+                <span class="chip-dot"></span>
+                <span class="chip-text">75% Attendance Shortage Warning</span>
+                <span class="chip-pts font-mono">+18 PSI</span>
+              </button>
+
+              <button class="stress-chip" data-impact="22" data-title="Semester Backlog / Retest">
+                <span class="chip-dot"></span>
+                <span class="chip-text">Active Backlog / Imminent Retest</span>
+                <span class="chip-pts font-mono">+22 PSI</span>
+              </button>
+
+              <button class="stress-chip" data-impact="15" data-title="Irrelevant Syllabus Grind">
+                <span class="chip-dot"></span>
+                <span class="chip-text">Memorizing Outdated Theory Slides</span>
+                <span class="chip-pts font-mono">+15 PSI</span>
+              </button>
+
+              <button class="stress-chip" data-impact="16" data-title="Simultaneous Deadlines">
+                <span class="chip-dot"></span>
+                <span class="chip-text">3 Assignments + Viva in 48 Hours</span>
+                <span class="chip-pts font-mono">+16 PSI</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="category-block">
+            <div class="cat-header font-mono">
+              <i data-lucide="briefcase" class="text-amber"></i>
+              <span>CAREER, INTERNSHIPS & PLACEMENT</span>
+            </div>
+            <div class="chips-grid">
+              <button class="stress-chip" data-impact="25" data-title="Cold Applications Ghosting">
+                <span class="chip-dot"></span>
+                <span class="chip-text">Ghosted by 30+ Tech Recruiters</span>
+                <span class="chip-pts font-mono">+25 PSI</span>
+              </button>
+
+              <button class="stress-chip" data-impact="20" data-title="2 Years Experience Trap">
+                <span class="chip-dot"></span>
+                <span class="chip-text">"Entry Level" Asking 2+ Yrs Experience</span>
+                <span class="chip-pts font-mono">+20 PSI</span>
+              </button>
+
+              <button class="stress-chip" data-impact="19" data-title="LeetCode / OA Anxiety">
+                <span class="chip-dot"></span>
+                <span class="chip-text">Unable to solve DSA / OA Questions</span>
+                <span class="chip-pts font-mono">+19 PSI</span>
+              </button>
+
+              <button class="stress-chip" data-impact="21" data-title="Resume Rejection Email">
+                <span class="chip-dot"></span>
+                <span class="chip-text">Received "We decided to move forward with others"</span>
+                <span class="chip-pts font-mono">+21 PSI</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="category-block">
+            <div class="cat-header font-mono">
+              <i data-lucide="users" class="text-rose"></i>
+              <span>PEER COMPARISON & FAMILY EXPECTATIONS</span>
+            </div>
+            <div class="chips-grid">
+              <button class="stress-chip" data-impact="24" data-title="LinkedIn Flex Overload">
+                <span class="chip-dot"></span>
+                <span class="chip-text">Batchmates posting high package offers</span>
+                <span class="chip-pts font-mono">+24 PSI</span>
+              </button>
+
+              <button class="stress-chip" data-impact="22" data-title="Family Package Questions">
+                <span class="chip-dot"></span>
+                <span class="chip-text">Parents asking "Campus placement kab lagegi?"</span>
+                <span class="chip-pts font-mono">+22 PSI</span>
+              </button>
+
+              <button class="stress-chip" data-impact="17" data-title="Severe Sleep Deprivation">
+                <span class="chip-dot"></span>
+                <span class="chip-text">Sleeping less than 4 hours for a week</span>
+                <span class="chip-pts font-mono">+17 PSI</span>
+              </button>
+
+              <button class="stress-chip" data-impact="18" data-title="Guilt During Rest">
+                <span class="chip-dot"></span>
+                <span class="chip-text">Feeling extreme guilt whenever not studying</span>
+                <span class="chip-pts font-mono">+18 PSI</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="telemetry-card">
+          <div class="tel-card-header font-mono">
+            <span>NEURAL LOAD MONITOR</span>
+            <span id="severityBadge" class="badge-safe">OPTIMAL</span>
+          </div>
+
+          <div class="meter-wrapper">
+            <svg viewBox="0 0 160 160">
+              <circle class="meter-base" cx="80" cy="80" r="68"></circle>
+              <circle class="meter-fill" id="meterFill" cx="80" cy="80" r="68"></circle>
+            </svg>
+            <div class="meter-readout">
+              <span class="meter-value font-mono" id="psiValue">0</span>
+              <span class="meter-tag font-mono">CUMULATIVE PSI</span>
+            </div>
+          </div>
+
+          <div class="diagnosis-block">
+            <h4 id="diagHeader">EQUILIBRIUM MAINTAINED</h4>
+            <p id="diagText">Select the pressures affecting your week on the left to see the clinical breakdown.</p>
+          </div>
+
+          <div class="breakdown-feed font-mono" id="breakdownFeed">
+            <div class="feed-placeholder">No stressors selected. System in resting state.</div>
+          </div>
+
+          <button id="resetChipsBtn" class="reset-btn font-mono">
+            <i data-lucide="rotate-ccw"></i> RESET ALL SELECTIONS
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="shredder-section">
+      <div class="section-title">
+        <span class="sec-label font-mono text-rose">02 // DIGITAL CATHARSIS</span>
+        <h2>The Imposter Syndrome Incinerator</h2>
+        <p>Type down the exact thought draining your energy today. Watch it vaporize into digital ash particles.</p>
+      </div>
+
+      <div class="burn-box-wrapper">
+        <div class="burn-card" id="burnCard">
+          <div class="burn-header font-mono">
+            <span class="text-rose"><i data-lucide="flame"></i> HIGH-HEAT DISPOSAL UNIT</span>
+            <span class="text-muted">ZERO RETENTION</span>
+          </div>
+          <textarea id="burnInput" placeholder="E.g., 'I feel like I'm fooling everyone and I don't belong in engineering', 'Rejection emails make me feel worthless'"></textarea>
+          <div class="burn-footer">
+            <span class="font-mono text-muted text-xs">Nothing is stored in any database.</span>
+            <button id="burnActionBtn" class="burn-btn">
+              <i data-lucide="zap"></i> INCINERATE THIS THOUGHT
+            </button>
+          </div>
+        </div>
+        <canvas id="ashCanvas"></canvas>
+      </div>
+    </section>
+
+    <section class="antidote-section">
+      <div class="section-title">
+        <span class="sec-label font-mono text-emerald">03 // CLINICAL REMEDIES</span>
+        <h2>How To De-Escalate The Machine</h2>
+        <p>Sustainable habits to survive the academic rat-race without sacrificing mental health.</p>
+      </div>
+
+      <div class="antidote-grid">
+        <div class="antidote-card">
+          <div class="antidote-icon text-emerald"><i data-lucide="cpu"></i></div>
+          <h3>Monotasking Over Multitasking</h3>
+          <p>Don't open VS Code, YouTube tutorial, LeetCode, and 15 WhatsApp groups simultaneously. Fix 1 goal for a 45-minute block, then step away.</p>
+          <div class="antidote-tag font-mono">RESTORES 35% ATTENTION</div>
+        </div>
+
+        <div class="antidote-card">
+          <div class="antidote-icon text-cyan"><i data-lucide="eye-off"></i></div>
+          <h3>The LinkedIn Anti-Poison Rule</h3>
+          <p>Remember that social media is a highlight reel of survivorship bias. Nobody posts the 80 rejected applications before their 1 offer.</p>
+          <div class="antidote-tag font-mono">REMOVES COMPARISON TRAP</div>
+        </div>
+
+        <div class="antidote-card">
+          <div class="antidote-icon text-purple"><i data-lucide="moon"></i></div>
+          <h3>Non-Negotiable Recovery Time</h3>
+          <p>Your brain consolidates memory and solves coding algorithms during stage 3 & REM sleep, not while doom-scrolling at 3:30 AM.</p>
+          <div class="antidote-tag font-mono">OPTIMAL NEURAL REPAIR</div>
+        </div>
+      </div>
+
+      <div class="breathing-strip">
+        <div class="breath-meta">
+          <span class="badge-vagus font-mono">AUTONOMIC NERVOUS SYSTEM REGULATOR</span>
+          <h3>Box Breathing Pacer (4-4-4-4)</h3>
+          <p>Used by athletes and emergency pilots to lower cortisol spikes and reduce racing thoughts within 60 seconds.</p>
+          <button id="breathToggle" class="start-breath-btn">
+            <i data-lucide="play" id="breathBtnIcon"></i>
+            <span id="breathBtnLabel">START 60-SEC PACER</span>
+          </button>
+        </div>
+
+        <div class="breath-visual">
+          <div class="breath-circle" id="breathCircle">
+            <span id="breathStatus" class="font-mono">STANDBY</span>
+            <span id="breathCountdown" class="font-mono text-emerald text-sm">4s</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer font-mono">
+    <span>PRESSURE_POINT // THE DARK REALITY</span>
+    <span>A REMINDER THAT YOU ARE MORE THAN YOUR RESUME OR BACKLOGS.</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
